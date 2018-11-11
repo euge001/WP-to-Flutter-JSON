@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "950984449519",
+    "firebase_url": "https://wpflutterjson.firebaseio.com",
+    "project_id": "wpflutterjson",
+    "storage_bucket": "wpflutterjson.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:950984449519:android:0f4890404b603ae1",
+        "android_client_info": {
+          "package_name": "com.example.wpflutterjson"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "950984449519-28d4b3hgcjopcdf5vmhjik73fcm2tkvd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wpflutterjson",
+            "certificate_hash": "3acbc266ceaac058869d5c53b79a7d9132a90404"
+          }
+        },
+        {
+          "client_id": "950984449519-vbqibuhfid2msrrclbb7qur87pscgimb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNpfHvz6J_HTDsDNbGxEDuqwUfmb5MsIc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "950984449519-vbqibuhfid2msrrclbb7qur87pscgimb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
