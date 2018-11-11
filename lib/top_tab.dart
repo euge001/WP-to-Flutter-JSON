@@ -1,10 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import './article.dart';
-import 'package:timeago/timeago.dart' as timeago;
-import 'package:share/share.dart';
+
 
 class TopTab extends StatefulWidget {
   @override
@@ -15,23 +13,23 @@ class _TopTabState extends State<TopTab> {
   List<dynamic> _articles = List<dynamic>();
   void _fetchArticles() async {
     var url =
-        'https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=de9fcefdc8a847d7a18d656774770c46';
+        'http://beta.friendtofly.com/wp-json/wp/v2/posts';
     var response = await http.get(url);
     if (response.statusCode == 200) {
       var _body = jsonDecode(response.body);
       setState(() {
-        _articles = _body['articles'];
+        _articles = _body;
       });
     }
   }
 
-  void _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
+//  void _launchURL(String url) async {
+//    if (await canLaunch(url)) {
+//      await launch(url);
+//    } else {
+//      throw 'Could not launch $url';
+//    }
+//  }
 
   @override
   void initState() {
@@ -56,7 +54,7 @@ class _TopTabState extends State<TopTab> {
                 title: Padding(
                   padding: const EdgeInsets.fromLTRB(0.0, 7.0, 0.0, 7.0),
                   child: new Text(
-                    _postItem.title.toString(),
+                    _postItem.title,
                     style: new TextStyle(
                       fontSize: 17.0,
                       fontFamily: 'Ubuntu',
@@ -65,43 +63,16 @@ class _TopTabState extends State<TopTab> {
                 ),
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(11.0, 0.0, 11.0, 0.0),
-                    child: Image.network(_postItem.urlToImage.toString()),
-                  ),
-                  Padding(
                     padding: const EdgeInsets.fromLTRB(11.0, 7.0, 11.0, 7.0),
                     child: new Text(
-                      _postItem.description.toString(),
+                      _postItem.content,
                       style: new TextStyle(
                         fontSize: 13.0,
                         fontFamily: 'Ubuntu',
                         fontStyle: FontStyle.italic,
                       ),
                     ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      new Text(
-                        timeago.format(
-                            DateTime.parse(_postItem.publishedAt.toString())),
-                        style: new TextStyle(fontFamily: 'Ubuntu'),
-                      ),
-                      new MaterialButton(
-                        onPressed: () {
-                          String url = _postItem.url.toString();
-                          _launchURL(url);
-                        },
-                        child: new Icon(Icons.language),
-                      ),
-                      new MaterialButton(
-                        onPressed: () {
-                          Share.share(_postItem.url.toString());
-                        },
-                        child: new Icon(Icons.share),
-                      ),
-                    ],
-                  ),
+                  ),//
                 ],
               ),
             );

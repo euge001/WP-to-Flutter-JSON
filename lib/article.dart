@@ -1,33 +1,15 @@
 class Article {
-  String source;
-  String id;
-  String name;
-  String title;
-  String description;
-  String url;
-  String urlToImage;
-  String publishedAt;
+  int id;
   String content;
-  Article(
-      {this.source,
-      this.id,
-      this.name,
-      this.title,
-      this.description,
-      this.url,
-      this.urlToImage,
-      this.publishedAt,
-      this.content});
+  String title;
+
+  Article({this.id, this.content, this.title});
+
   factory Article.fromJson(Map<String, dynamic> json) {
     return Article(
-        source: json['source']['id'],
-        id: json['source']['id'],
-        name: json['source']['name'],
-        title: json['title'],
-        description: json['description'],
-        url: json['url'],
-        urlToImage: json['urlToImage'],
-        publishedAt: json['publishedAt'],
-        content: json['content']);
+      id: json['id'],
+      title: json['title']["rendered"],
+      content: json['content']["rendered"],
+    );
   }
 }
